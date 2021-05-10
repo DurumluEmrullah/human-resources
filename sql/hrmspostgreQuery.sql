@@ -27,7 +27,7 @@ CREATE TABLE public."employers"
     "employer_id" integer NOT NULL,
     "company_name" varchar(30) NOT NULL,
     "web_site" varchar(40) NOT NULL,
-	"phone_number" varchar(15) NOT NULL,
+    "phone_number" varchar(15) NOT NULL,
     "email_verify" boolean,
     "admin_verify" boolean,
     PRIMARY KEY ("employer_id")
