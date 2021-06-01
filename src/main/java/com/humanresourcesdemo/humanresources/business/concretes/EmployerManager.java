@@ -34,13 +34,13 @@ public class EmployerManager implements EmployerService {
 
     @Override
     public Result add(Employer employer) {
-        ArrayList<Result> results=new ArrayList<Result>( Arrays.asList(employerValidator(employer),
+        ArrayList<Result> rules=new ArrayList<Result>( Arrays.asList(employerValidator(employer),
                         existEmail(employer.getEmail()),
                         domainControl(employer.getEmail(),employer.getWebSite()))) ;
 
-        for(int i =0;i<results.size();i++){
-            if(!results.get(i).isSuccess()){
-                return results.get(i);
+        for(int i =0;i<rules.size();i++){
+            if(!rules.get(i).isSuccess()){
+                return rules.get(i);
             }
         }
 
