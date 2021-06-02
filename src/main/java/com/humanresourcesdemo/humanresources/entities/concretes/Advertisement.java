@@ -21,12 +21,16 @@ public class Advertisement {
     private int advertisementId;
 
     @ManyToOne()
-    @JoinColumn(name = "job_id")
+    @JoinColumn(name = "job_id",referencedColumnName = "id")
     private Job job;
 
     @ManyToOne()
-    @JoinColumn(name="city_id")
+    @JoinColumn(name="city_id",referencedColumnName = "city_id")
     private City city;
+
+    @ManyToOne()
+    @JoinColumn(name = "employer_id",referencedColumnName = "id")
+    private Employer employer;
 
     @Column(name = "description")
     private String description;
@@ -43,8 +47,8 @@ public class Advertisement {
     @Column(name = "deadline")
     private Date deadline;
 
-    @Column(name="statu")
-    private boolean status;
+    @Column(name="isActive")
+    private boolean isActive;
 
     @Column(name = "created_date")
     private Date createdDate;
