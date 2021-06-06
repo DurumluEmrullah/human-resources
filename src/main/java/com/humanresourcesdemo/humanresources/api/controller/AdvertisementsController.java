@@ -1,6 +1,7 @@
 package com.humanresourcesdemo.humanresources.api.controller;
 
 import com.humanresourcesdemo.humanresources.business.abstracts.AdvertisementService;
+import com.humanresourcesdemo.humanresources.core.api.concretes.BaseController;
 import com.humanresourcesdemo.humanresources.core.utilities.results.DataResult;
 import com.humanresourcesdemo.humanresources.core.utilities.results.Result;
 import com.humanresourcesdemo.humanresources.entities.concretes.Advertisement;
@@ -12,26 +13,17 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/api/Advertisements")
-public class AdvertisementsController {
+public class AdvertisementsController extends BaseController<AdvertisementService,Advertisement> {
 
 
     private AdvertisementService advertisementService;
 
     @Autowired
     public AdvertisementsController(AdvertisementService advertisementService){
+        super(advertisementService);
         this.advertisementService=advertisementService;
     }
 
-    @PostMapping("/add")
-    public Result add(@RequestBody Advertisement advertisement){
-
-        return this.advertisementService.add(advertisement);
-    }
-
-    @GetMapping("/getall")
-    public DataResult<List<Advertisement>> getAll(){
-        return this.advertisementService.getAll();
-    }
 
     @GetMapping("/getallactiveadvertisement")
     public DataResult<List<Advertisement>> getAllActiveAdvertisement(){

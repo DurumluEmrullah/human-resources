@@ -2,6 +2,7 @@ package com.humanresourcesdemo.humanresources.business.concretes;
 
 import com.humanresourcesdemo.humanresources.business.abstracts.AdvertisementService;
 import com.humanresourcesdemo.humanresources.business.constants.Messages;
+import com.humanresourcesdemo.humanresources.core.business.abstracts.BaseService;
 import com.humanresourcesdemo.humanresources.core.utilities.results.*;
 import com.humanresourcesdemo.humanresources.dataAccess.abstracts.AdvertisementDao;
 import com.humanresourcesdemo.humanresources.entities.concretes.Advertisement;

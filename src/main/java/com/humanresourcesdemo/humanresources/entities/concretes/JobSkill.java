@@ -8,16 +8,21 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "skills")
+@Table(name = "job_skills")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Skill {
+public class JobSkill {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "skill_id")
-    private int skillId;
+    @Column(name = "id")
+    private int id;
 
-    @Column(name = "skill_name")
-    private String skillName;
+    @ManyToOne()
+    @JoinColumn(name = "cv_id")
+    private CurriculumVitae cv;
+
+    @ManyToOne()
+    @JoinColumn(name = "skill_id")
+    private Skill skill;
 }
