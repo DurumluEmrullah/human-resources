@@ -1,5 +1,6 @@
 package com.humanresourcesdemo.humanresources.entities.concretes;
 
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,14 +23,17 @@ public class WorkExperience {
     @JoinColumn(name = "cv_id")
     private CurriculumVitae cv;
 
+    @NotNull
     @ManyToOne()
     @JoinColumn(name = "company_id")
     private Company company;
 
+    @NotNull
     @ManyToOne()
     @JoinColumn(name = "position_id")
     private Position position;
 
+    @NotNull
     @Column(name = "started_date")
     private Date startedDate;
 

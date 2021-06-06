@@ -8,6 +8,6 @@ import com.humanresourcesdemo.humanresources.entities.concretes.JobSkill;
 import java.util.*;
 
 public interface JobSkillService extends BaseService<JobSkill> {
-//
-//    DataResult<List<JobSkill>> getByCvId(int cvId);
+
+    DataResult<List<JobSkill>> getByCvId(int cvId);
 }

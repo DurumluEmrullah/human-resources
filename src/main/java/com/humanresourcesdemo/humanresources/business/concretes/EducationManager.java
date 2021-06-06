@@ -8,6 +8,7 @@ import com.humanresourcesdemo.humanresources.core.utilities.results.SuccessResul
 import com.humanresourcesdemo.humanresources.dataAccess.abstracts.EducationDao;
 import com.humanresourcesdemo.humanresources.entities.concretes.Education;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -51,5 +52,11 @@ public class EducationManager implements EducationService {
     @Override
     public Result delete(Education entity) {
         return null;
+    }
+
+    @Override
+    public DataResult<List<Education>> getByCvIdAndOrderByGraduateDateDesc(int cvId) {
+        Sort sort =Sort.by(Sort.Direction.DESC,"graduateDate");
+        return new SuccessDataResult<>(this.educationDao.findByNameOrderByGraduateDateDescAndByCv(sort,cvId),"Öğrenim geçmişi kronolojik sraya göre tertn sıralandı.");
     }
 }

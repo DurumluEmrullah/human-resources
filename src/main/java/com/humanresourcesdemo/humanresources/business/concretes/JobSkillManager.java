@@ -25,10 +25,10 @@ public class JobSkillManager implements JobSkillService {
     }
 
 
-//    @Override
-//    public DataResult<List<JobSkill>> getByCvId(int cvId) {
-//        return new SuccessDataResult<List<JobSkill>>(this.jobSkillDao.getByCurriculumVitae_CvId(cvId),"Yetenekler CV Id'sine ye göre listelendi");
-//    }
+    @Override
+    public DataResult<List<JobSkill>> getByCvId(int cvId) {
+        return new SuccessDataResult<List<JobSkill>>(this.jobSkillDao.getByCv_cvId(cvId),"Yetenekler CV Id'sine ye göre listelendi");
+    }
 
     @Override
     public DataResult<List<JobSkill>> getAll() {

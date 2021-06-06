@@ -8,6 +8,7 @@ import com.humanresourcesdemo.humanresources.core.utilities.results.SuccessResul
 import com.humanresourcesdemo.humanresources.dataAccess.abstracts.WorkExperienceDao;
 import com.humanresourcesdemo.humanresources.entities.concretes.WorkExperience;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -52,5 +53,11 @@ public class WorkEcperienceManager implements WorkExperienceService {
     @Override
     public Result delete(WorkExperience entity) {
         return null;
+    }
+
+    @Override
+    public DataResult<List<WorkExperience>> orderByFinishDateDecs(int cvId) {
+        Sort sort =Sort.by(Sort.Direction.DESC,"finishedDate");
+        return new SuccessDataResult<>(this.workExperienceDao.findByNameOrderByFinishedDateDescAndCv(sort,cvId),"İş tecrübeleri sıralandı.");
     }
 }
