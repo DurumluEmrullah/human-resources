@@ -32,6 +32,10 @@ public class Advertisement {
     @JoinColumn(name = "employer_id",referencedColumnName = "id")
     private Employer employer;
 
+    @ManyToOne()
+    @JoinColumn(name="way_of_working_id",referencedColumnName = "id")
+    private WayOfWorking wayOfWorking;
+
     @Column(name = "description")
     private String description;
 

@@ -45,12 +45,23 @@ public class CityManager implements CityService {
 
     @Override
     public Result update(City city) {
-        return null;
+        ArrayList<Result> rules =new ArrayList<Result>(Arrays.asList(
+                existCityName(city),idControl(city.getCityId())
+        ));
+
+        for( int i =0; i< rules.size();i++){
+            if(!rules.get(i).isSuccess()){
+                return rules.get(i);
+            }
+        }
+        this.cityDao.save(city);
+        return new SuccessResult("Şehir Güncellendi.");
     }
 
     @Override
     public Result delete(City city) {
-        return null;
+        this.cityDao.delete(city);
+        return new SuccessResult("Şehir Silindi");
     }
 
     private Result existCityName(City city){
@@ -63,5 +74,17 @@ public class CityManager implements CityService {
         }
 
         return  new SuccessResult("Şehir eklendi.");
+    }
+
+    private Result idControl(int id){
+        List<City> cities = this.cityDao.findAll();
+        boolean result = true;
+        for (int i =0;i<cities.size();i++){
+            if(cities.get(i).getCityId() ==id){
+                return  new SuccessResult();
+            }
+        }
+
+        return  new ErrorResult("Böyle bir şehir yok.");
     }
 }
